@@ -1,6 +1,3 @@
-# Edited from:
-# https://github.com/cowboy/dotfiles
-
 # ANSI CODES - SEPARATE MULTIPLE VALUES WITH ;
 #
 #  0  reset          4  underline
@@ -12,128 +9,65 @@
 # 32  42  green     36  46  cyan
 # 33  43  yellow    37  47  white
 # \[\e[0;31m\]
+# \[\033[0;30m\]
+# RESET \[\033[0m\]
+
+parse_git_branch () {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 
 
-
-if [[ ! "${prompt_colors[@]}" ]]; then
-  prompt_colors=(
-    "33" # information color
-    "37" # bracket color
-    "31" # error color
-  )
-
-  if [[ "$SSH_TTY" ]]; then
-    # connected via ssh
-    prompt_colors[0]="32"
-  elif [[ "$USER" == "root" ]]; then
-    # logged in as root
-    prompt_colors[0]="35"
-  fi
-fi
-
-# Inside a prompt function, run this alias to setup local $c0-$c9 color vars.
-alias prompt_getcolors='prompt_colors[9]=; local i; for i in ${!prompt_colors[@]}; do local c$i="\[\e[0;${prompt_colors[$i]}m\]"; done'
-
-# Exit code of previous command.
-function prompt_exitcode() {
-  prompt_getcolors
-
-  [[ $1 != 0 ]] && echo " $c2$1$c9"
 }
 
-# Git status.
-function prompt_git() {
-  prompt_getcolors
-  local status output flags
-  status="$(git status 2>/dev/null)"
-  [[ $? != 0 ]] && return;
-  output="$(echo "$status" | awk '/# Initial commit/ {print "(init)"}')"
-  [[ "$output" ]] || output="$(echo "$status" | awk '/# On branch/ {print $4}')"
-  [[ "$output" ]] || output="$(git branch | perl -ne '/^\* (.*)/ && print $1')"
-  flags="$(
-    echo "$status" | awk 'BEGIN {r=""} \
-      /^# Changes to be committed:$/        {r=r "+"}\
-      /^# Changes not staged for commit:$/  {r=r "!"}\
-      /^# Untracked files:$/                {r=r "?"}\
-      END {print r}'
-  )"
-  if [[ "$flags" ]]; then
-    output="$output$c1:$c0$flags"
-  fi
-  echo "$c1[$c0$output$c1]$c9"
+parse_git_tag () {
+  git describe --tags 2> /dev/null
 }
 
-# hg status.
-function prompt_hg() {
-  prompt_getcolors
-  local summary output bookmark flags
-  summary="$(hg summary 2>/dev/null)"
-  [[ $? != 0 ]] && return;
-  output="$(echo "$summary" | awk '/branch:/ {print $2}')"
-  bookmark="$(echo "$summary" | awk '/bookmarks:/ {print $2}')"
-  flags="$(
-    echo "$summary" | awk 'BEGIN {r="";a=""} \
-      /(modified)/     {r= "+"}\
-      /(unknown)/      {a= "?"}\
-      END {print r a}'
-  )"
-  output="$output:$bookmark"
-  if [[ "$flags" ]]; then
-    output="$output$c1:$c0$flags"
-  fi
-  echo "$c1[$c0$output$c1]$c9"
-}
-
-# SVN info.
-function prompt_svn() {
-  prompt_getcolors
-  local info="$(svn info . 2> /dev/null)"
-  local last current
-  if [[ "$info" ]]; then
-    last="$(echo "$info" | awk '/Last Changed Rev:/ {print $4}')"
-    current="$(echo "$info" | awk '/Revision:/ {print $2}')"
-    echo "$c1[$c0$last$c1:$c0$current$c1]$c9"
+parse_git_changes(){
+  if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]]; then
+    echo " +"
+  else
+    echo ""
   fi
 }
 
-# Maintain a per-execution call stack.
-prompt_stack=()
-trap 'prompt_stack=("${prompt_stack[@]}" "$BASH_COMMAND")' DEBUG
+parse_git_branch_or_tag() {
+  local OUT="$(parse_git_branch)"
 
-function prompt_command() {
-  local exit_code=$?
-  # If the first command in the stack is prompt_command, no command was run.
-  # Set exit_code to 0 and reset the stack.
-  [[ "${prompt_stack[0]}" == "prompt_command" ]] && exit_code=0
-  prompt_stack=()
+  if [ "$OUT" == "(no branch)" ]; then
+    OUT="$(parse_git_tag)";
+  fi
 
-  # Manually load z here, after $? is checked, to keep $? from being clobbered.
-  [[ "$(type -t _z)" ]] && _z --add "$(pwd -P 2>/dev/null)" 2>/dev/null
-
-  # While the simple_prompt environment var is set, disable the awesome prompt.
-  [[ "$simple_prompt" ]] && PS1='\n$ ' && return
-
-  prompt_getcolors
-  # http://twitter.com/cowboy/status/150254030654939137
-  PS1="\n"
-  # path: [user@host:path]
-  PS1="$PS1$c1[$c0\u$c1][$c0\h$c1][$c0\w$c1]$c9"
-  #PS1="$PS1[\e[0;33m\]\h:\W \u\$\[\e[m\]]"
-  PS1="$PS1\n"  
-  # svn: [repo:lastchanged]
-  PS1="$PS1$(prompt_svn)"
-  # git: [branch:flags]
-  PS1="$PS1$(prompt_git)"
-  # hg:  [branch:flags]
-  PS1="$PS1$(prompt_hg)"
-  # misc: [cmd#:hist#]
-  # PS1="$PS1$c1[$c0#\#$c1:$c0!\!$c1]$c9"
-
-  # date: [HH:MM:SS]
-  #PS1="$PS1$c1[$c0$(date +"%H$c1:$c0%M$c1:$c0%S")$c1]$c9"
-  # exit code: 127
-  PS1="$PS1$(prompt_exitcode "$exit_code")"
-  PS1="$PS1 \$ "
+  if [[ "$OUT" ]]; then
+    OUT="($OUT$(parse_git_changes))"
+  fi
+  echo $OUT
 }
 
-PROMPT_COMMAND="prompt_command"
+
+
+
+
+PS1=""
+
+PS1="$PS1\n"
+
+PS1="$PS1[\033[0;33m\]\w"
+PS1="$PS1\[\033[0m\]]"
+
+PS1="$PS1\n"
+#PS1="$PS1\033[0;33m\]\u"
+#PS1="$PS1\[\033[0m\]"
+
+#PS1="[$PS1@\[\033[0;33m\]\h"
+#PS1="$PS1\[\033[0m\]]"
+
+
+PS1="$PS1 \[\033[0;90m\]\T"
+PS1="$PS1\[\033[0m\]"
+
+PS1="$PS1 \[\033[0;34m\]$(parse_git_branch_or_tag)"
+PS1="$PS1\[\033[0m\]"
+
+PS1="$PS1\$ "
+#PS1="\u@\h:\w\$(parse_git_branch_or_tag) $ "
+
