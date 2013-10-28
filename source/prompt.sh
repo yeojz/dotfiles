@@ -42,30 +42,45 @@ parse_git_branch_or_tag() {
 }
 
 
+# Exit code of previous command.
+function prompt_exitcode() {
+  [[ $1 != 0 ]] && echo " $1"
+}
 
 
+prompt_command(){
+  local exit_code=$?
+  # If the first command in the stack is prompt_command, no command was run.
+  # Set exit_code to 0 and reset the stack.
+  [[ "${prompt_stack[0]}" == "prompt_command" ]] && exit_code=0
+  prompt_stack=()
 
-PS1=""
+  PS1=""
 
-PS1="$PS1\n"
+  PS1="$PS1\n"
 
-PS1="$PS1[\033[0;33m\]\w"
-PS1="$PS1\[\033[0m\]]"
+  PS1="$PS1[\033[0;33m\]\w"
+  PS1="$PS1\[\033[0m\]]"
 
-PS1="$PS1\n"
-#PS1="$PS1\033[0;33m\]\u"
-#PS1="$PS1\[\033[0m\]"
+  PS1="$PS1\n"
+  PS1="$PS1\033[0;32m\]\u"
+  PS1="$PS1\[\033[0m\]"
 
-#PS1="[$PS1@\[\033[0;33m\]\h"
-#PS1="$PS1\[\033[0m\]]"
+  #PS1="[$PS1@\[\033[0;33m\]\h"
+  #PS1="$PS1\[\033[0m\]]"
 
 
-PS1="$PS1 \[\033[0;90m\]\T"
-PS1="$PS1\[\033[0m\]"
+  PS1="$PS1 \[\033[0;90m\]\T"
+  PS1="$PS1\[\033[0m\]"
 
-PS1="$PS1 \[\033[0;34m\]$(parse_git_branch_or_tag)"
-PS1="$PS1\[\033[0m\]"
+  PS1="$PS1 \[\033[0;34m\]$(parse_git_branch_or_tag)"
+  PS1="$PS1\[\033[0m\]"
 
-PS1="$PS1\$ "
+  PS1="$PS1\$ "
 #PS1="\u@\h:\w\$(parse_git_branch_or_tag) $ "
+
+  PS1="$PS1$(prompt_exitcode "$exit_code")"
+}
+
+PROMPT_COMMAND="prompt_command"
 
