@@ -1,6 +1,17 @@
+#!/usr/bin/env bash
+
 #
 # Adapted from https://github.com/sethwoodworth/dotfiles/blob/dot/.bashrc
 #
+
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... and ignore same sucessive entries.
+export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth
+
+export HISTSIZE=10240
+export HISTTIMEFORMAT='%F %T '
+
 
 # Color codes
 RED='\[\033[31m\]'
@@ -61,7 +72,7 @@ function prompt_command() {
             _dirty="[*]"
         fi
 
-        branch=" (${RED}${_branch} ${_dirty}${NIL})"
+        branch=" (${RED}${_branch}${_dirty}${NIL})"
     fi
 
     # Dollar/pound sign
