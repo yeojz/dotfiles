@@ -81,7 +81,7 @@ function prompt_command() {
 
 
 
-    PS1=""
+    PS1="\n"
 
     #virualenv
     PS1="$PS1${PURPLE}${venv}"
@@ -98,7 +98,7 @@ function prompt_command() {
     PS1="$PS1${YELLOW}\W${NIL}"
     
     #time
-    PS1="$PS1 ${GREEN}\T${NIL}"
+    PS1="$PS1 ${GREEN}\t${NIL}"
     
     #git branch
     PS1="$PS1${branch}"
