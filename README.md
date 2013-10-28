@@ -1,4 +1,2 @@
-dotfiles
-========
-
-Gerald Dotfiles
+Just Another Dotfile
+======
