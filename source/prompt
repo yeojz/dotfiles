@@ -8,14 +8,11 @@
 # 31  41  red       35  45  magenta
 # 32  42  green     36  46  cyan
 # 33  43  yellow    37  47  white
-# \[\e[0;31m\]
-# \[\033[0;30m\]
-# RESET \[\033[0m\]
+# Basic Form: \[\033[0;30m\]
+# RESET: \[\033[0m\]
 
 parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
-
-
 }
 
 parse_git_tag () {
@@ -23,7 +20,9 @@ parse_git_tag () {
 }
 
 parse_git_changes(){
-  if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]]; then
+
+  local MESSAGE="$(git status 2> /dev/null | tail -n1 | cut -c1-7)"
+  if [[ "$MESSAGE" != "nothing" ]]; then
     echo "+"
   fi
 }
@@ -44,7 +43,7 @@ parse_git_branch_or_tag() {
 
 # Exit code of previous command.
 function prompt_exitcode() {
-  [[ $1 != 0 ]] && echo " $1"
+  [[ $1 != 0 ]] && echo " exit code: $1\n"
 }
 
 
@@ -59,27 +58,37 @@ prompt_command(){
 
   PS1="$PS1\n"
 
-  PS1="$PS1[\033[0;33m\]\w"
-  PS1="$PS1\[\033[0m\]]"
+  #Current Directory
+  #PS1="$PS1[\033[0;33m\]\w"
+  #PS1="$PS1\[\033[0m\]]"
+  #PS1="$PS1\n"
 
-  PS1="$PS1\n"
+  #Hostname
+  #PS1="$PS1@\[\033[0;33m\]\h"
+  #PS1="$PS1\[\033[0m\]:"
+
+  #Username
   PS1="$PS1\033[0;32m\]\u"
   PS1="$PS1\[\033[0m\]"
 
-  #PS1="[$PS1@\[\033[0;33m\]\h"
-  #PS1="$PS1\[\033[0m\]]"
+  PS1="$PS1:"
 
+  #Basename Current Directory
+  PS1="$PS1\033[0;33m\]\W"
+  PS1="$PS1\[\033[0m\]"
 
+  #Time
   PS1="$PS1 \[\033[0;90m\]\T"
   PS1="$PS1\[\033[0m\]"
 
+  #Git
   PS1="$PS1 \[\033[0;34m\]$(parse_git_branch_or_tag)"
   PS1="$PS1\[\033[0m\]"
 
   PS1="$PS1\$ "
-#PS1="\u@\h:\w\$(parse_git_branch_or_tag) $ "
+  #PS1="\u@\h:\w\$(parse_git_branch_or_tag) $ "
 
-  PS1="$PS1$(prompt_exitcode "$exit_code")"
+  #PS1="$PS1$(prompt_exitcode "$exit_code")"
 }
 
 PROMPT_COMMAND="prompt_command"
