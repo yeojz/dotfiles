@@ -23,11 +23,7 @@ parse_git_tag () {
 }
 
 parse_git_changes(){
-  if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]]; then
-    echo " +"
-  else
-    echo ""
-  fi
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "+"
 }
 
 parse_git_branch_or_tag() {
