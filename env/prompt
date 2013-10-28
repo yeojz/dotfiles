@@ -87,11 +87,11 @@ function prompt_command() {
     PS1="$PS1${PURPLE}${venv}"
     
     #username
-    PS1="$PS1${GREY}\u${NIL}"
+    PS1="$PS1${YELLOW}\u${NIL}"
 
-    PS1="$PS1${GREY}@"
+    PS1="$PS1${YELLOW}@"
     #hostname
-    PS1="$PS1${GREY}${HD}${NIL}"
+    PS1="$PS1${YELLOW}${HD}${NIL}"
     PS1="$PS1:"
     
     #current path
