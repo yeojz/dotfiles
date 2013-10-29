@@ -59,7 +59,7 @@ function prompt_command() {
     PS1="$PS1${GREY}@"
 
     #hostname
-    PS1="$PS1${GREY}${HD}${NIL}"
+    PS1="$PS1${GREY}\h${NIL}"
 
     #full path
     PS1="$PS1:${GREY}\w${NIL} \n"
