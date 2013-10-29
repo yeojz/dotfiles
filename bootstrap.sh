@@ -6,6 +6,7 @@
 #
 
 #Environment Settings
+source ~/dotfiles/env/git-prompt.sh
 source ~/dotfiles/env/prompt
 source ~/dotfiles/env/virtualenv
 

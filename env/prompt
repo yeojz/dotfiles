@@ -26,11 +26,17 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 #GIT_PS1_SHOWUPSTREAM="auto git"
 
 
+# misc
+function get_sha() {
+    git rev-parse --short HEAD 2>/dev/null
+}
+
+
+#
+#   Main Prompt
+#
 function prompt_command() {
 
-    #
-    #   PARTS
-    #
 
     # Virtualenv
     _venv=`basename "$VIRTUAL_ENV"`
