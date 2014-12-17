@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
+
+#-----------------------------------------
+# Virtual Environment
+#-----------------------------------------
 
 export WORKON_HOME="/Users/junzhi/virtualenv"
 export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"

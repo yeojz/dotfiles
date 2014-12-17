@@ -1,0 +1,15 @@
+
+
+
+#-----------------------------------------
+# Shortcut rewrites
+#-----------------------------------------
+
+alias sudo='sudo '
+
+alias ls='ls -Gp'
+alias la='ls -al'
+alias dir='ls -l'
+
+alias rename='mv '
+alias move='mv '
