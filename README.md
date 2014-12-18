@@ -7,9 +7,11 @@ Dotfiles
 
 ```
 $ cd
-$ git clone https://github.com/yeojz/dotfiles.git dotfiles
+$ git clone https://github.com/yeojz/dotfiles.git .dotfiles
+$ bash ~/.dotfiles/scripts-setup/setup-zsh.sh
 ```
 
+You may want to create a `~/.dotfiles.local` to store other aliases.
 
 
 ## Setup Scripts
