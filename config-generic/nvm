@@ -1,0 +1,3 @@
+export NVM_SYMLINK_CURRENT=true
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh

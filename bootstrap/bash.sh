@@ -14,6 +14,7 @@ source ~/.dotfiles/config-generic/env
 source ~/.dotfiles/config-generic/git
 source ~/.dotfiles/config-generic/helpers
 source ~/.dotfiles/config-generic/homebrew
+source ~/.dotfiles/config-generic/homebrew-cask
 source ~/.dotfiles/config-generic/osx
 source ~/.dotfiles/config-generic/ruby
 source ~/.dotfiles/config-generic/subl

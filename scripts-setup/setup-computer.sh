@@ -3,10 +3,11 @@
 # System
 brew install brew-cask 
 
+
 # Languages and Tools
 brew install git git-flow 
 brew install mercurial
-brew install node 
+brew install nvm
 brew install hub 
 brew install rbenv ruby-build
 brew install python
@@ -29,9 +30,17 @@ brew cask install android-file-transfer
 brew cask install android-studio   
 brew cask install atom 
 brew cask install brackets    
+brew cask install cactus
 brew cask install filezilla      
+brew cask install flashlight
+brew cask install flux
+brew cask install github
+brew cask install google-drive
 brew cask install hipchat   
-brew cask install sequel-pro    
+brew cask install inkscape  
+brew cask install sequel-pro
+brew cask install sketch
+brew cask install sketch-toolbox  
 brew cask install skype     
 brew cask install spectacle 
 brew cask install spotify     
@@ -39,16 +48,35 @@ brew cask install textmate
 brew cask install transmission
 brew cask install vagrant
 brew cask install virtualbox
+
+
+
+# Fonts
+# brew tap caskroom/fonts 
+brew cask install font-alegreya
+brew cask install font-alegreya-sans
+brew cask install font-alegreya-sans-sc
+brew cask install font-alegreya-sans-sc
+brew cask install font-lato
+brew cask install font-libre-baskerville
+brew cask install font-merriweather
+brew cask install font-noto-serif
+brew cask install font-old-standard-tt
+brew cask install font-open-sans
+brew cask install font-roboto
+brew cask install font-source-sans-pro
+brew cask install font-ubuntu
   
 
 
 
 # Node
-npm install -g serve
+npm install -g 6to5
+npm install -g browserify
 npm install -g gulp
-npm install -g gulp-autocompletion-zsh
-npm install -g kss
 npm install -g less
+npm install -g react-tools
+npm install -g serve
 
 
 
@@ -76,3 +104,23 @@ python get-pip.py
 # Pip
 pip install virtualenv
 pip install fabric
+
+
+
+# App Store List
+Pushbullet
+LastPass
+Autodesk SketchBook
+OneDrive
+KakaoTalk
+Line
+Slack
+Keynote
+Numbers
+Pages
+Xcode
+Evernote
+The Unarchiver
+Caffine
+Markdown Pro
+

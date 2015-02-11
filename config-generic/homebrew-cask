@@ -1,0 +1,2 @@
+PATH="/opt/homebrew-cask/Caskroom:$PATH"
+export PATH
