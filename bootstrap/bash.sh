@@ -18,6 +18,7 @@ source ~/.dotfiles/config-generic/homebrew-cask
 source ~/.dotfiles/config-generic/osx
 source ~/.dotfiles/config-generic/ruby
 source ~/.dotfiles/config-generic/subl
+source ~/.dotfiles/config-generic/visualstudio
 
 # Specific
 source ~/.dotfiles/config-specific/prompt

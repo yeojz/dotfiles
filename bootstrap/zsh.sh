@@ -17,6 +17,7 @@ source ~/.dotfiles/config-generic/nvm
 source ~/.dotfiles/config-generic/osx
 source ~/.dotfiles/config-generic/ruby
 source ~/.dotfiles/config-generic/subl
+source ~/.dotfiles/config-generic/visualstudio
 
 
 # Specific

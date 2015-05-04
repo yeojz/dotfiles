@@ -24,7 +24,7 @@ tap caskroom/versions
 install git git-flow 
 install mercurial
 install nvm
-install hub 
+install hub
 install rbenv ruby-build
 install python
 
@@ -39,8 +39,9 @@ cask install sketch
 cask install sketch-toolbox  
 
 ## Dev
-cask install atom 
-cask install filezilla 
+cask install atom
+cask install github
+cask install filezilla
 cask install sequel-pro
 cask install vagrant
 cask install virtualbox

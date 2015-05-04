@@ -1,3 +1,15 @@
+#!/usr/bin/env bash
+
+# Add a current symlink
 export NVM_SYMLINK_CURRENT=true
-export NVM_DIR=~/.nvm
+
+# Shift directory to /usr/local
+export NVM_DIR=/usr/local/nvm
 source $(brew --prefix nvm)/nvm.sh
+
+# Fix Paths
+PATH=/usr/local/nvm/current/bin:$PATH
+export PATH
+
+# Fix Oh-my-zsh plugin error
+eval "`npm completion`"

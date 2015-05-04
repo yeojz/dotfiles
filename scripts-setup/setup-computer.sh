@@ -1,16 +1,20 @@
 
 
 # System
-brew install brew-cask 
+brew install brew-cask
+
+
 
 
 # Languages and Tools
-brew install git git-flow 
+brew install git git-flow
 brew install mercurial
 brew install nvm
-brew install hub 
+brew install hub
 brew install rbenv ruby-build
 brew install python
+
+
 
 
 # Other Stuff
@@ -23,31 +27,36 @@ brew install rabbitmq
 brew isntall redis
 brew install sqlite
 brew install cmake autoconf automake gcc
+brew install aria2
+brew install youtube-dl
+
+
 
 
 # Apps
 brew cask install android-file-transfer 
-brew cask install android-studio   
-brew cask install atom 
-brew cask install brackets    
+brew cask install android-studio
+brew cask install atom
+brew cask install brackets
 brew cask install cactus
-brew cask install filezilla      
+brew cask install filezilla
 brew cask install flashlight
 brew cask install flux
 brew cask install github
 brew cask install google-drive
-brew cask install hipchat   
-brew cask install inkscape  
+brew cask install hipchat
+brew cask install inkscape
 brew cask install sequel-pro
 brew cask install sketch
-brew cask install sketch-toolbox  
-brew cask install skype     
+brew cask install sketch-toolbox
+brew cask install skype
 brew cask install spectacle 
-brew cask install spotify     
-brew cask install textmate    
+brew cask install spotify
+brew cask install textmate
 brew cask install transmission
 brew cask install vagrant
 brew cask install virtualbox
+
 
 
 
@@ -66,17 +75,17 @@ brew cask install font-open-sans
 brew cask install font-roboto
 brew cask install font-source-sans-pro
 brew cask install font-ubuntu
-  
+
 
 
 
 # Node
-npm install -g 6to5
-npm install -g browserify
-npm install -g gulp
-npm install -g less
-npm install -g react-tools
-npm install -g serve
+npm i -g babel
+npm i -g browserify
+npm i -g less
+npm i -g serve
+npm i -g eslint
+npm i -g babel-eslint
 
 
 
@@ -101,9 +110,11 @@ python get-pip.py
 
 
 
+
 # Pip
 pip install virtualenv
 pip install fabric
+
 
 
 
