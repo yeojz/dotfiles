@@ -9,6 +9,6 @@
   pu = push upstream
   save = !git add -A && git commit -m 'SAVEPOINT'
   undo = reset HEAD~1 --mixed
-  up = !git pull --rebase --prune
+  up = pull --rebase --prune
   wip = !git add -u && git commit -m 'WIP'
   wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
