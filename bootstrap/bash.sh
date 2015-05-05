@@ -2,30 +2,17 @@
 # For default bash prompt
 #
 
-
-# Scripts
-source ~/.dotfiles/scripts-addon/git-completion.bash
-source ~/.dotfiles/scripts-addon/git-prompt.sh
-source ~/.dotfiles/scripts-addon/extract.sh
-
 # Generic 
-source ~/.dotfiles/config-generic/android
-source ~/.dotfiles/config-generic/env
-source ~/.dotfiles/config-generic/git
-source ~/.dotfiles/config-generic/helpers
-source ~/.dotfiles/config-generic/homebrew
-source ~/.dotfiles/config-generic/homebrew-cask
-source ~/.dotfiles/config-generic/osx
-source ~/.dotfiles/config-generic/ruby
-source ~/.dotfiles/config-generic/subl
-source ~/.dotfiles/config-generic/visualstudio
+source ~/.dotfiles/config/index.sh
+
 
 # Specific
-source ~/.dotfiles/config-specific/prompt
-source ~/.dotfiles/config-specific/virtualenv
+source ~/.dotfiles/scripts-env/git-completion.sh
+source ~/.dotfiles/scripts-env/git-prompt.sh
+
 
 if [ -f ~/.dotfiles.local ]; then
-  source ~/.dotfiles.local   
+  source ~/.dotfiles.local
 fi
 
 # Export PATH again just in case

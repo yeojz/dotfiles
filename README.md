@@ -5,42 +5,59 @@ Dotfiles
 
 ## Getting Started
 
-```
+```bash
 $ cd
-$ git clone https://github.com/yeojz/dotfiles.git .dotfiles
-$ bash ~/.dotfiles/scripts-setup/setup-zsh.sh
+$ git clone https://github.com/yeojz/dotfiles.git ~/.dotfiles
+$ ~/.dotfiles/scripts-setup/setup-zsh.sh
 ```
 
 You may want to create a `~/.dotfiles.local` to store other aliases.
 
+**Note:** All scripts assume the `dotfiles` repository is stored in `~/.dotfiles`
 
-## Setup Scripts
-**folder**: `scripts-setup`
+
+
+
+
+
+## `/setup`
+**folder**: `setup`
 
 |filename | description
 |---|---|
 | setup-profile | to initialise dotfiles to standard mac `bash` terminal
-| setup-zsh	| if you have installed `zsh` or `oh-my-zsh`
-| setup-homebrew	| Homebrew setup (2014/12/18)
-| setup-computer	| List of commands for computer environment setup
-
-## Addon Scripts
-**folder**: `scripts-addon`
+| setup-zsh | if you have installed `zsh` or `oh-my-zsh`
+| notes.md  | List of commands for computer environment setup
 
 
-## Non-User Specific Configs
-**folder**: `config-generic`
+## `/bootstrap`
 
-These configuration files should be alright to use AS-IS
-
-## User Specific Configs
-**folder**: `config-specific`
-
-These are configuration files you probably want to edit according to your environment
+Script to bootstrap all configurations into your shell.
 
 
-## Miscellaneous
-**folder**: `misc`
+## Config Files
+**folder**: `config`
+
+You can just include `index.sh` which should reference all files in the folder.
+
+
+## `/misc`
+
+Other settings or files which can be included.
+
+**Note:** `git-aliases` is automatically included into `.gitconfig` is setup scripts are used.
+
+
+## `/scripts`
+
+Helper scripts for various common use.
+
+
+## `scripts-env`
+
+These are environment configuration files which you can use with prompts
+
+
 
 
 ## Other Helpful References

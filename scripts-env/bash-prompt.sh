@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # ignore same successive entries and duplicates
 export HISTCONTROL=ignoredups

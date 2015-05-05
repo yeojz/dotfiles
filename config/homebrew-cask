@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 PATH="/opt/homebrew-cask/Caskroom:$PATH"
 export PATH

@@ -1,9 +1,10 @@
+#!/bin/sh
 
 #-----------------------------------------
 # Virtual Environment
 #-----------------------------------------
 
-export WORKON_HOME="/Users/junzhi/virtualenv"
+export WORKON_HOME="~/virtualenv"
 export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
 export VIRTUALENVWRAPPER_VIRTUALENV="/usr/local/bin/virtualenv"
 source "/usr/local/bin/virtualenvwrapper.sh"

@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-
+#!/bin/sh
 
 #-----------------------------------------
 # Using Non-System Ruby

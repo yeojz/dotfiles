@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Add a current symlink
 export NVM_SYMLINK_CURRENT=true
