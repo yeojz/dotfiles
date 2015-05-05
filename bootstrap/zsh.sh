@@ -9,7 +9,6 @@ source ~/.dotfiles/config/git
 source ~/.dotfiles/config/helpers
 source ~/.dotfiles/config/homebrew
 source ~/.dotfiles/config/homebrew-cask
-source ~/.dotfiles/config/hub
 source ~/.dotfiles/config/nvm
 source ~/.dotfiles/config/osx
 source ~/.dotfiles/config/ruby
