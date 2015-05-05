@@ -17,11 +17,7 @@ You may want to create a `~/.dotfiles.local` to store other aliases.
 
 
 
-
-
-
-## `/setup`
-**folder**: `setup`
+### `/setup`
 
 |filename | description
 |---|---|
@@ -30,29 +26,29 @@ You may want to create a `~/.dotfiles.local` to store other aliases.
 | notes.md  | List of commands for computer environment setup
 
 
-## `/bootstrap`
+### `/bootstrap`
 
 Script to bootstrap all configurations into your shell.
 
 
-## `/config`
+### `/config`
 
 You can just include `index.sh` which should reference all files in the folder.
 
 
-## `/misc`
+### `/misc`
 
 Other settings or files which can be included.
 
 **Note:** `git-aliases` is automatically included into `.gitconfig` is setup scripts are used.
 
 
-## `/scripts`
+### `/scripts`
 
 Helper scripts for various common use.
 
 
-## `scripts-env`
+### `/scripts-env`
 
 These are environment configuration files which you can use with prompts
 
