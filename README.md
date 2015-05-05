@@ -35,8 +35,7 @@ You may want to create a `~/.dotfiles.local` to store other aliases.
 Script to bootstrap all configurations into your shell.
 
 
-## Config Files
-**folder**: `config`
+## `/config`
 
 You can just include `index.sh` which should reference all files in the folder.
 
