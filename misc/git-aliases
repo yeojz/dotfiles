@@ -6,6 +6,7 @@
   co = checkout
   history = log --oneline --abbrev-commit --all --graph --decorate --color
   po = push origin
+  pr = !hub pull-request
   pu = push upstream
   save = !git add -A && git commit -m 'SAVEPOINT'
   squash = rebase -i
