@@ -4,6 +4,8 @@
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
   ca = commit -a
   co = checkout
+  ffm = merge --ff-only
+  go = !hub browse
   history = log --oneline --abbrev-commit --all --graph --decorate --color
   po = push origin
   pr = !hub pull-request
@@ -12,5 +14,6 @@
   squash = rebase -i
   undo = reset HEAD~1 --mixed
   up = pull --rebase --prune
+  vs = !hub compare
   wip = !git add -u && git commit -m 'WIP'
   wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
