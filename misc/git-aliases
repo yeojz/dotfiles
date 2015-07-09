@@ -1,19 +1,22 @@
 [alias]
   amend = commit -a --amend
+  au = "!f() { git remote add upstream git@github.com:$1.git}; f"
   bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
   ca = commit -a
   co = checkout
   ffm = merge --ff-only
-  go = !hub browse
+  github = !hub browse
   history = log --oneline --abbrev-commit --all --graph --decorate --color
   po = push origin
   pr = !hub pull-request
+  prb = "!f() { hub pull-request -b $1; }; f"
   pu = push upstream
   save = !git add -A && git commit -m 'SAVEPOINT'
   squash = rebase -i
   undo = reset HEAD~1 --mixed
   up = pull --rebase --prune
+  upo = pull --rebase --prune origin
   vs = !hub compare
   wip = !git add -u && git commit -m 'WIP'
   wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export DOCKERUP_HOME_USER=$HOME/Docker
+export DOCKERUP_FOLDER_USER=$HOME/ZJY-Workspace/Docker
+
+export DOCKERUP_HOME_REPO=$HOME/Repo
+export DOCKERUP_FOLDER_REPO=$HOME/ZJY-Workspace/Repo
+

@@ -4,11 +4,11 @@
 
 # Helpers
 # ------------------------------------------------------------
-dockerup-add-port() {
+dockerup-vm-add-port () {
   VBoxManage modifyvm "boot2docker-vm" --natpf1 "$1,tcp,127.0.0.1,$2,,$2";
 }
 
-dockerup-delete-port(){
+dockerup-vm-delete-port (){
   VBoxManage modifyvm "boot2docker-vm" --natpf1 delete "$1"
 }
 
@@ -17,7 +17,7 @@ dockerup-delete-port(){
 
 # Common Runners
 # ------------------------------------------------------------
-dockerup-run() {
+dockerup-run () {
   case $1 in
     'elasticsearch')
       docker run --name=elasticsearch_instance -p 9200:9200 -p 9300:9300 -d elasticsearch
@@ -36,18 +36,63 @@ dockerup-run() {
 
 
 
+dockerup-stop () {
+  docker stop $1
+  docker rm $1
+}
 
-# Main
+
+
+
+
+dockerup-vm () {
+  case $1 in
+    'add-ports')
+      dockerup-vm-add-port elasticsearch-9200 9200
+      dockerup-vm-add-port elasticsearch-9300 9300
+      dockerup-vm-add-port mongodb 27017
+      dockerup-vm-add-port rabbitmq 5672
+      dockerup-vm-add-port rabbitmq-management 15672
+      dockerup-vm-add-port web 8200
+      ;;
+    'delete-ports')
+      dockerup-vm-delete-port elasticsearch-9200
+      dockerup-vm-delete-port elasticsearch-9300
+      dockerup-vm-delete-port mongodb
+      dockerup-vm-delete-port rabbitmq
+      dockerup-vm-delete-port rabbitmq-management
+      dockerup-vm-delete-port web
+      ;;
+    'remove-users')
+      VBoxManage sharedfolder remove boot2docker-vm --name Users
+      ;;
+  esac
+}
+
+
+
+
+
+
+# Core
 # ------------------------------------------------------------
+
 dockerup () {
   case $1 in
+    'nfs')
+      sudo nfsd checkexports
+      sudo nfsd restart
+      ;;
     'down')
       boot2docker down
       unset DOCKER_HOST
       unset DOCKER_CERT_PATH
       unset DOCKER_TLS_VERIFY
-      ;;    
-    'fix-cert')
+      ;;
+    'ssh')
+      boot2docker ssh
+      ;;
+    'fix-certs')
       boot2docker ssh sudo /etc/init.d/docker restart
       eval "$(boot2docker shellinit)"
       ;;
@@ -57,32 +102,11 @@ dockerup () {
     'open')
       open "http://$(boot2docker ip):$2"
       ;;
-    'stopremove')
-      docker stop $2
-      docker rm $2
-      ;;
     'up')
-      boot2docker up
+      boot2docker start --vbox-share=disable
       eval "$(boot2docker shellinit)"
-      ;;
-    'vm-add-ports')
-      dockerup-add-port elasticsearch-9200 9200
-      dockerup-add-port elasticsearch-9300 9300
-      dockerup-add-port mongodb 27017
-      dockerup-add-port rabbitmq 5672
-      dockerup-add-port rabbitmq-management 15672
-      dockerup-add-port web 8200
-      ;;
-    'vm-delete-ports')
-      dockerup-delete-port elasticsearch-9200
-      dockerup-delete-port elasticsearch-9300
-      dockerup-delete-port mongodb
-      dockerup-delete-port rabbitmq
-      dockerup-delete-port rabbitmq-management
-      dockerup-delete-port web
-      ;;
-    *)
-      docker $1
+      boot2docker ssh "sudo mkdir -p $DOCKERUP_HOME_USER && sudo mount -t nfs -o noatime,soft,nolock,vers=3,udp,proto=udp,rsize=8192,wsize=8192,namlen=255,timeo=10,retrans=3,nfsvers=3 -v 192.168.59.3:$DOCKERUP_FOLDER_USER $DOCKERUP_HOME_USER"
+      boot2docker ssh "sudo mkdir -p $DOCKERUP_HOME_REPO && sudo mount -t nfs -o noatime,soft,nolock,vers=3,udp,proto=udp,rsize=8192,wsize=8192,namlen=255,timeo=10,retrans=3,nfsvers=3 -v 192.168.59.3:$DOCKERUP_FOLDER_REPO $DOCKERUP_HOME_REPO"
       ;;
   esac
 }
