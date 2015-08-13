@@ -1,3 +1,4 @@
 #!/bin/sh
 
 alias npr='npm run'
+alias npv='npm version'
