@@ -8,6 +8,9 @@
   ffm = merge --ff-only
   github = !hub browse
   history = log --oneline --abbrev-commit --all --graph --decorate --color
+  pb = push backup
+  pbb = push bitbucket
+  pgh = push github
   po = push origin
   pr = !hub pull-request
   prb = "!f() { hub pull-request -b $1; }; f"

@@ -81,13 +81,17 @@ brew cask install font-ubuntu
 
 # Node
 npm i -g babel
-npm i -g browserify
-npm i -g less
-npm i -g serve
-npm i -g eslint
 npm i -g babel-eslint
+npm i -g eslint
+npm i -g eslint-plugin-react
+npm i -g gulp
+npm i -g mocha
+npm i -g serve
+npm i -g webpack
+npm i -g webpack-dev-server
 
-
+# Node - in one command
+#npm i -g babel babel-eslint eslint eslint-plugin-react gulp mocha serve webpack webpack-dev-server
 
 
 # Gem

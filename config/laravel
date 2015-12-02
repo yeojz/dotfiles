@@ -1,0 +1,3 @@
+#!/bin/sh
+
+alias artisan='php artisan'

@@ -87,29 +87,29 @@ dockerup () {
       sudo nfsd restart
       ;;
     'down')
-      boot2docker down
+      docker-machine stop
       unset DOCKER_HOST
       unset DOCKER_CERT_PATH
       unset DOCKER_TLS_VERIFY
       ;;
     'ssh')
-      boot2docker ssh
+      docker-machine ssh
       ;;
     'fix-certs')
-      boot2docker ssh sudo /etc/init.d/docker restart
-      eval "$(boot2docker shellinit)"
+      docker-machine ssh sudo /etc/init.d/docker restart
+      eval "$(docker-machine env)"
       ;;
     'init')
-      eval "$(boot2docker shellinit)"
+      eval "$(docker-machine env)"
       ;;
     'open')
-      open "http://$(boot2docker ip):$2"
+      open "http://$(docker-machine ip):$2"
       ;;
     'up')
-      boot2docker start --vbox-share=disable
-      eval "$(boot2docker shellinit)"
-      boot2docker ssh "sudo mkdir -p $DOCKERUP_HOME_USER && sudo mount -t nfs -o noatime,soft,nolock,vers=3,udp,proto=udp,rsize=8192,wsize=8192,namlen=255,timeo=10,retrans=3,nfsvers=3 -v 192.168.59.3:$DOCKERUP_FOLDER_USER $DOCKERUP_HOME_USER"
-      boot2docker ssh "sudo mkdir -p $DOCKERUP_HOME_REPO && sudo mount -t nfs -o noatime,soft,nolock,vers=3,udp,proto=udp,rsize=8192,wsize=8192,namlen=255,timeo=10,retrans=3,nfsvers=3 -v 192.168.59.3:$DOCKERUP_FOLDER_REPO $DOCKERUP_HOME_REPO"
+      docker-machine start --vbox-share=disable
+      eval "$(docker-machine env)"
+      docker-machine ssh "sudo mkdir -p $DOCKERUP_HOME_USER && sudo mount -t nfs -o noatime,soft,nolock,vers=3,udp,proto=udp,rsize=8192,wsize=8192,namlen=255,timeo=10,retrans=3,nfsvers=3 -v 192.168.59.3:$DOCKERUP_FOLDER_USER $DOCKERUP_HOME_USER"
+      docker-machine ssh "sudo mkdir -p $DOCKERUP_HOME_REPO && sudo mount -t nfs -o noatime,soft,nolock,vers=3,udp,proto=udp,rsize=8192,wsize=8192,namlen=255,timeo=10,retrans=3,nfsvers=3 -v 192.168.59.3:$DOCKERUP_FOLDER_REPO $DOCKERUP_HOME_REPO"
       ;;
   esac
 }

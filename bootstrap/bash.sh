@@ -10,6 +10,7 @@ source ~/.dotfiles/config/git
 source ~/.dotfiles/config/helpers
 source ~/.dotfiles/config/homebrew
 source ~/.dotfiles/config/homebrew-cask
+source ~/.dotfiles/config/laravel
 source ~/.dotfiles/config/npm
 source ~/.dotfiles/config/nvm
 source ~/.dotfiles/config/osx
@@ -29,6 +30,10 @@ source ~/.dotfiles/scripts-env/git-prompt.sh
 
 if [ -f ~/.dotfiles.local ]; then
   source ~/.dotfiles.local
+fi
+
+if [ -d ~/.dotbins ]; then
+  PATH=~/.dotbins:$PATH
 fi
 
 # Export PATH again just in case
