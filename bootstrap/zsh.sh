@@ -20,10 +20,6 @@ source ~/.dotfiles/config/subl
 source ~/.dotfiles/config/virtualenv
 source ~/.dotfiles/config/visualstudio
 
-
-# scripts
-source ~/.dotfiles/scripts/dockerup.sh
-
 if [ -f ~/.dotfiles.local ]; then
   source ~/.dotfiles.local
 fi

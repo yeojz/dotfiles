@@ -19,10 +19,6 @@ source ~/.dotfiles/config/subl
 source ~/.dotfiles/config/virtualenv
 source ~/.dotfiles/config/visualstudio
 
-
-# scripts
-source ~/.dotfiles/scripts/dockerup.sh
-
 # Specific
 source ~/.dotfiles/scripts-env/git-completion.sh
 source ~/.dotfiles/scripts-env/git-prompt.sh
