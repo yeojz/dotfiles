@@ -1,8 +1,6 @@
 #!/bin/sh
 
 # Install Ruby and Configure Env
-
-
 if test ! $(which rbenv)
 then
   echo "  Installing rbenv..."
@@ -15,10 +13,7 @@ then
   brew install ruby-build > /tmp/dotfiles-ruby-build.log
 fi
 
-
-
-
-# if test $(which rbenv) 
+# if test $(which rbenv)
 #   if test $(which ruby-build)
 #   then
 #   fi

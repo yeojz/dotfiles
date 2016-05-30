@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 PATH_HUB=$(which hub)
 
 if (( $+commands[hub] ))

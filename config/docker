@@ -1,8 +1,3 @@
 #!/bin/sh
 
-export DOCKERUP_HOME_USER=$HOME/Docker
-export DOCKERUP_FOLDER_USER=$HOME/Workspace/Docker
-
-export DOCKERUP_HOME_REPO=$HOME/Repo
-export DOCKERUP_FOLDER_REPO=$HOME/Workspace/Repo
-
+eval "$(docker-machine env default)"

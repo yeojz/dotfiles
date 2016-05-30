@@ -1,42 +1,32 @@
-
-
 # Additional Setups
 # ----------------------------
 
 ## Install Cask
-install caskroom/cask/brew-cask
+# install caskroom/cask/brew-cask
 
 ## Setup Fonts
-tap caskroom/fonts 
+tap caskroom/fonts
 
 ## Setup Versions
 tap caskroom/versions
-
-
-
-
-
 
 # Default Brew Apps
 # ----------------------------
 
 ## Dev
-install git git-flow 
+install git git-flow
 install mercurial
 install nvm
 install hub
 install rbenv ruby-build
 install python
 
-
-
-
 # Default Cask Apps
 # ----------------------------
 
 ## Design
 cask install sketch
-cask install sketch-toolbox  
+cask install sketch-toolbox
 
 ## Dev
 cask install atom
@@ -47,13 +37,9 @@ cask install vagrant
 cask install virtualbox
 
 ## Misc
-cask install android-file-transfer 
+cask install android-file-transfer
 cask install google-drive
 cask install transmission
-
-
-
-
 
 # Default Cask Fonts
 # ----------------------------
@@ -70,7 +56,3 @@ cask install font-open-sans
 cask install font-roboto
 cask install font-source-sans-pro
 cask install font-ubuntu
-
-
-
-

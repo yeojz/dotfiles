@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 if test ! $(which nvm)
 then
   echo "  Installing Node stable"
@@ -12,7 +11,3 @@ then
   echo "  Set node version to use"
   nvm alias default stable
 fi
-
-
-
-
