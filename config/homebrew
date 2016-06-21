@@ -1,5 +1,3 @@
 #!/bin/sh
 
 alias dir-brew='cd /usr/local/Cellar'
-
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
