@@ -18,6 +18,7 @@ source ~/.dotfiles/config/ruby
 source ~/.dotfiles/config/subl
 source ~/.dotfiles/config/virtualenv
 source ~/.dotfiles/config/visualstudio
+source ~/.dotfiles/config/yarn
 
 # Specific
 source ~/.dotfiles/scripts-env/git-completion.sh
@@ -34,5 +35,3 @@ fi
 
 # Export PATH again just in case
 export PATH
-
-

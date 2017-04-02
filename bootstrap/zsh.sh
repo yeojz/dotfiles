@@ -19,6 +19,7 @@ source ~/.dotfiles/config/ruby
 source ~/.dotfiles/config/subl
 source ~/.dotfiles/config/virtualenv
 source ~/.dotfiles/config/visualstudio
+source ~/.dotfiles/config/yarn
 
 if [ -f ~/.dotfiles.local ]; then
   source ~/.dotfiles.local
@@ -30,5 +31,3 @@ fi
 
 # Export PATH again just in case
 export PATH
-
-

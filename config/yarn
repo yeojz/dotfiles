@@ -1,0 +1,5 @@
+#!/bin/sh
+
+alias ynpm= 'yarn'
+alias ynpr='yarn run'
+alias ynpv='yarn version'
