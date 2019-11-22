@@ -3,7 +3,7 @@
 alias sudo='sudo '
 
 alias ls='ls -Gp'
-alias la='ls -al'
+alias la='ls -la'
 alias dir='ls -l'
 
 alias rename='mv '

@@ -1,8 +1,0 @@
-#!/bin/sh
-
-PATH_HUB=$(which hub)
-
-if (( $+commands[hub] ))
-then
-  alias git=$PATH_HUB
-fi

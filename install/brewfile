@@ -1,58 +1,34 @@
-# Additional Setups
-# ----------------------------
-
-## Install Cask
-# install caskroom/cask/brew-cask
-
-## Setup Fonts
-tap caskroom/fonts
-
-## Setup Versions
-tap caskroom/versions
-
-# Default Brew Apps
-# ----------------------------
-
-## Dev
-install git git-flow
-install mercurial
+# install	youtube-dl
+# install syncthing
+install	go
+install aria2
+install git
 install nvm
-install hub
-install rbenv ruby-build
-install python
+install rbenv
+install ruby-build
+install sqlite
+install wget
+install yarn
 
-# Default Cask Apps
-# ----------------------------
-
-## Design
-cask install sketch
-cask install sketch-toolbox
-
-## Dev
-cask install atom
-cask install github
-cask install filezilla
-cask install sequel-pro
-cask install vagrant
-cask install virtualbox
-
-## Misc
-cask install android-file-transfer
-cask install google-drive
-cask install transmission
-
-# Default Cask Fonts
-# ----------------------------
-cask install font-alegreya
-cask install font-alegreya-sans
-cask install font-alegreya-sans-sc
-cask install font-alegreya-sans-sc
-cask install font-lato
-cask install font-libre-baskerville
-cask install font-merriweather
-cask install font-noto-serif
-cask install font-old-standard-tt
-cask install font-open-sans
-cask install font-roboto
-cask install font-source-sans-pro
-cask install font-ubuntu
+# cask install android-studio
+# cask install docker
+# cask install gimp
+# cask install kitematic
+# cask install lepton
+# cask install onedrive
+# cask install postman
+# cask install sequel-pro
+# cask install transmission
+# cask install virtualbox
+cask install coconutbattery
+cask install firefox
+cask install flux
+cask install google-chrome
+cask install hosts
+cask install iterm2
+cask install keepassxc
+cask install spectacle
+cask install spotify
+cask install tunnelblick
+cask install visual-studio-code
+cask install vlc
